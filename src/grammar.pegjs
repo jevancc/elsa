@@ -1,12 +1,10 @@
 
 {
   function range() {
-    const loc = location();
-    const start = new types.Location(loc.start.offset, loc.start.line - 1, loc.start.column - 1);
-    const end = new types.Location(loc.end.offset, loc.end.line - 1, loc.end.column - 1);
-    return new types.Range(start, end);
+    return types.Range.fromParserLocation(location());
   }
 }
+
 Program "program"
   = defns:(_ Definition _)* evals:(_ Evaluation _)* {
     defns = defns.map(e => e[1]);

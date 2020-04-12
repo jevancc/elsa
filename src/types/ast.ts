@@ -1,3 +1,4 @@
+import { IFileRange } from '../parser';
 import { ErrorResult, InfoResult, SuccessResult, WarningResult } from './result';
 
 export class Location {
@@ -17,6 +18,12 @@ export class Location {
 }
 
 export class Range {
+  public static fromParserLocation(loc: IFileRange): Range {
+    const start = new Location(loc.start.offset, loc.start.line - 1, loc.start.column - 1);
+    const end = new Location(loc.end.offset, loc.end.line - 1, loc.end.column - 1);
+    return new Range(start, end);
+  }
+
   constructor(public readonly start: Location, public readonly end: Location) {}
 
   public merge(...ranges: Range[]) {

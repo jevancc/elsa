@@ -5,11 +5,12 @@ import fs from 'fs';
 import _ from 'lodash';
 import ora from 'ora';
 import yargs from 'yargs';
-import { parse } from './parser';
+import { parse } from '.';
 import {
   ErrorResult,
   Evaluation,
   InfoResult,
+  Program,
   Range,
   SuccessResult,
   VariableMap,
@@ -78,9 +79,20 @@ export function elsa(filename: string): void {
   const code = fs.readFileSync(filename).toString();
 
   const logParseEnv = ora(`... Parsing and Checking Definitions`).start();
-  const program = parse(code);
-  const envResult = program.buildEnv();
   let env: VariableMap = null;
+  let program: Program = null;
+
+  const parseResult = parse(code);
+  if (parseResult instanceof ErrorResult) {
+    logParseEnv.fail('... Parsing and Checking Definitions').stop();
+    process.stdout.write(chalk.redBright(_.padStart('- ', 4) + parseResult.message) + '\n');
+    printCodeRegion(code, parseResult.range);
+    return;
+  } else {
+    program = parseResult;
+  }
+
+  const envResult = program.buildEnv();
   if (envResult instanceof ErrorResult) {
     logParseEnv.fail('... Parsing and Checking Definitions').stop();
     process.stdout.write(chalk.redBright(_.padStart('- ', 4) + envResult.message) + '\n');
