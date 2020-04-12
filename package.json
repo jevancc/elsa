@@ -1,6 +1,6 @@
 {
   "name": "elsajs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tiny language for understanding the lambda-calculus",
   "bin": {
     "elsa": "build/main/bin.js"
