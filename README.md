@@ -18,7 +18,7 @@ You can try `elsa` online at [this link](http://goto.ucsd.edu/elsa/index.html)
 You can install locally and run `elsa` with Node.js by
 
 ```bash
-$ npm install -g elsajs
+$ npm install -g elsa-js
 ```
 
 ## Overview

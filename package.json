@@ -1,6 +1,6 @@
 {
-  "name": "elsajs",
-  "version": "1.0.1",
+  "name": "elsa-js",
+  "version": "1.0.0",
   "description": "A tiny language for understanding the lambda-calculus",
   "bin": {
     "elsa": "build/main/bin.js"
@@ -26,7 +26,7 @@
     "version": "standard-version",
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "npx trash build src/parser.ts",
-    "prepare-release": "run-s reset test version"
+    "prepare-release": "run-s reset build test version"
   },
   "engines": {
     "node": ">=8.9"
