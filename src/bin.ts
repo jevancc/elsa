@@ -19,10 +19,12 @@ import {
 
 const argv = yargs
   .command('* <file>', '', yargs => {
-    yargs.positional('file', {
-      describe: 'input read from file',
-      type: 'string'
-    });
+    yargs
+      .positional('file', {
+        describe: 'input read from file',
+        type: 'string'
+      })
+      .usage('elsa <file>');
   })
   .help().argv;
 
