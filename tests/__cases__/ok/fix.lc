@@ -41,11 +41,10 @@ let DECR  = \n   -> SND (n (SKIP1 INCR) (PAIR FALSE ZERO))
 let SUB   = \n m -> m DECR n
 let EQL   = \n m -> AND (ISZ (SUB n m)) (ISZ (SUB m n))
 let ADD   = \n m -> n INCR m
-let MUL   = \n m -> n (ADD m) ZERO 
-let ISZ   = \n -> n (\z -> FALSE) TRUE 
+let MUL   = \n m -> n (ADD m) ZERO
 
 --------------------------------------------------------------------------------
--- RECURSION 
+-- RECURSION
 --------------------------------------------------------------------------------
 
 let Y     = \f -> (\x -> f (x x)) (\y -> f (y y))
@@ -58,22 +57,22 @@ let FAC   = Y (\f n -> ITE (ISZ n) ONE  (MUL n (f (DECR n))))
 --------------------------------------------------------------------------------
 
 eval sum_two :
-  SUM TWO 
-  =~> THREE 
+  SUM TWO
+  =~> THREE
 
 eval sum_three :
-  SUM THREE 
-  =~> SIX 
+  SUM THREE
+  =~> SIX
 
-eval fac_three : 
-  FAC TWO 
-  =~> TWO 
+eval fac_three :
+  FAC TWO
+  =~> TWO
 
-eval fac_three : 
-  FAC THREE 
-  =~> SIX 
+eval fac_three :
+  FAC THREE
+  =~> SIX
 
-eval fac_four : 
+eval fac_four :
   FAC FOUR
   =~> \f x -> f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f x)))))))))))))))))))))))
 

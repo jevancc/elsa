@@ -1,0 +1,82 @@
+{
+  "name": "elsajs",
+  "version": "1.0.0",
+  "description": "A tiny language for understanding the lambda-calculus",
+  "bin": {
+    "elsa": "build/main/bin.js"
+  },
+  "main": "build/main/index.js",
+  "typings": "build/main/index.d.ts",
+  "module": "build/module/index.js",
+  "repository": "https://github.com/jevancc/elsajs",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "describe": "npm-scripts-info",
+    "generate:parser": "npx ts-node scripts/generate-parser.ts",
+    "build": "run-s clean && run-s generate:parser && run-p build:*",
+    "build:main": "tsc -p tsconfig.json",
+    "build:module": "tsc -p tsconfig.module.json",
+    "fix": "run-s fix:*",
+    "fix:prettier": "npx prettier \"{scripts,src}/**/*.ts\" --write",
+    "fix:tslint": "npx tslint --fix \"{scripts,src}/**/*.ts\" ",
+    "test": "run-s generate:* test:*",
+    "test:lint": "npx tslint \"{scripts,src}/**/*.ts\" && npx prettier \"{scripts,src}/**/*.ts\" --list-different",
+    "test:unit": "npx jest",
+    "version": "standard-version",
+    "reset": "git clean -dfx && git reset --hard && npm i",
+    "clean": "npx trash build src/parser.ts",
+    "prepare-release": "run-s reset test version"
+  },
+  "engines": {
+    "node": ">=8.9"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.149",
+    "@types/yargs": "^15.0.4",
+    "chalk": "^4.0.0",
+    "lodash": "^4.17.15",
+    "ora": "^4.0.3",
+    "sha.js": "^2.4.11",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "@bitjson/npm-scripts-info": "^1.0.0",
+    "@bitjson/typedoc": "^0.15.0-0",
+    "@istanbuljs/nyc-config-typescript": "^0.1.3",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.1",
+    "codecov": "^3.5.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "gh-pages": "^2.0.1",
+    "jest": "^25.3.0",
+    "npm-run-all": "^4.1.5",
+    "nyc": "^14.1.1",
+    "open-cli": "^5.0.0",
+    "pegjs": "^0.10.0",
+    "prettier": "^1.18.2",
+    "standard-version": "^6.0.1",
+    "trash-cli": "^3.0.0",
+    "ts-jest": "^25.3.1",
+    "ts-node": "^8.8.2",
+    "ts-pegjs": "^0.2.6",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-immutable": "^6.0.1",
+    "typescript": "^3.8.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "exclude": [
+      "**/*.spec.js"
+    ]
+  }
+}

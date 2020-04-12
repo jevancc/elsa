@@ -1,0 +1,6 @@
+let U = (\u -> u u) (\w -> w w)
+
+eval diverge_no_normal_form :
+  U U
+  =~> U U
+

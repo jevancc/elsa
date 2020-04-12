@@ -1,7 +1,0 @@
-resolver: lts-14.12
-flags: {}
-extra-package-dbs: []
-packages:
-- '.'
-extra-deps:
-- dequeue-0.1.12

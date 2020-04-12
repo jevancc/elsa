@@ -1,0 +1,5 @@
+let U = (\u -> u u) (\w -> w w)
+
+eval uu_ok_in_two_steps :
+  U U
+  =*> U U
