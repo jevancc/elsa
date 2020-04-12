@@ -1,4 +1,4 @@
-# ELSA
+# elsa.js
 
 `elsa` is a tiny language designed to build
 intuition about how the Lambda Calculus, or
@@ -15,19 +15,10 @@ You can try `elsa` online at [this link](http://goto.ucsd.edu/elsa/index.html)
 
 ## Install
 
-You can locally build and run `elsa` by
-
-1. Installing [stack](https://www.haskellstack.org)
-2. Cloning this repo
-3. Building `elsa` with `stack`.
-
-That is, to say
+You can install locally and run `elsa` with Node.js by
 
 ```bash
-$ curl -sSL https://get.haskellstack.org/ | sh
-$ git clone https://github.com/ucsd-progsys/elsa.git
-$ cd elsa
-$ stack install
+$ npm install -g elsajs
 ```
 
 ## Overview
